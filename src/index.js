@@ -107,7 +107,6 @@ function chooseHole(holes) {
 *
 */
 function gameOver() {
-  // TODO: Write your code here
   if(time > 0) {
     let timeoutId = showUp();
     return timeoutId;
@@ -188,6 +187,10 @@ function updateScore() {
   // Update score.textContent with points
   score.textContent = points;
 
+  // Plays Monokuma Laugh sound.
+  playLaugh();
+
+
   // Return points
   return points;
 }
@@ -201,7 +204,7 @@ function updateScore() {
 */
 function clearScore() {
   // Set the points global variable to 0
-  let points = 0;
+  points = 0;
 
   // Update score.textContent
   score.textContent = points;
@@ -284,7 +287,7 @@ function setDuration(duration) {
 *
 */
 function stopGame(){
-  // stopAudio(song);  //optional
+  // stopAudio(song);  
   clearInterval(timer);
   return "game stopped";
 }
@@ -300,10 +303,48 @@ function startGame(){
   showUp();
   setEventListeners();
   startTimer();
+  clearScore();
+  play();
   return "game started";
+  
 }
 
 startButton.addEventListener("click", startGame);
+
+const audioHit = new Audio("../assets/Laugh1.mp3");
+const audioHit2 = new Audio("../assets/Laugh2.mp3");
+const song = new Audio("../assets/Danganronpa.mp3");
+
+function playAudio(audioObject) {
+  audioObject.play();
+}
+
+function loopAudio(audioObject) {
+  audioObject.loop = true;
+  playAudio(audioObject);
+}
+
+function stopAudio(audioObject) {
+  audioObject.pause();
+}
+
+function play() {
+  console.log("Playing song.")
+  playAudio(song);
+  song.volume = 0.2;
+}
+
+function playLaugh() {
+  console.log("Monokuma laughs.")
+  // either play audioHit or audioHit2
+  let index = randomInteger(0,1);
+  if (index === 0) {
+  return playAudio(audioHit);
+  }
+  return playAudio(audioHit2)
+}
+
+
 
 
 // Please do not modify the code below.
