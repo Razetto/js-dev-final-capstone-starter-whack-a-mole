@@ -12,6 +12,12 @@ const onPageConsole = (msg) => {
 
 describe("US-03: toggleVisibility()", () => {
 
+	beforeEach(async () => {
+		page.on("console", onPageConsole);
+		page.on("pageerror", (err) => console.log(err));
+		await page.goto(baseURL, { waitUntil: "load" });
+	  });
+
 	it("should use hole.classList.toggle to toggle the show class", async () => {
 	  const toggle = await page.evaluate(() => {
 		return window.toggleVisibility.toString();
@@ -30,6 +36,12 @@ describe("US-03: toggleVisibility()", () => {
   
   describe("US-03: showUp()", () => {
   
+	beforeEach(async () => {
+		page.on("console", onPageConsole);
+		page.on("pageerror", (err) => console.log(err));
+		await page.goto(baseURL, { waitUntil: "load" });
+	  });
+
 	it("should use the toggleVisibility(hole) function inside showAndHide()", async () => {
 	  const showAndHide = await page.evaluate(() => {
 		return window.showAndHide.toString();
@@ -68,6 +80,12 @@ describe("US-03: toggleVisibility()", () => {
   
   describe("US-03: startGame() and gameOver()", () => {
   
+	beforeEach(async () => {
+		page.on("console", onPageConsole);
+		page.on("pageerror", (err) => console.log(err));
+		await page.goto(baseURL, { waitUntil: "load" });
+	  });
+
 	it("should call showUp() from the startGame() function", async () => {
 	  const startGame = await page.evaluate(() => {
 		return window.startGame.toString();

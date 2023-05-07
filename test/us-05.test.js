@@ -11,6 +11,12 @@ const onPageConsole = (msg) => {
 };
 
 describe("US-05: startTimer() and updateTimer()", () => {
+	beforeEach(async () => {
+		page.on("console", onPageConsole);
+		page.on("pageerror", (err) => console.log(err));
+		await page.goto(baseURL, { waitUntil: "load" });
+	  });
+	
 	it("should update timer every 1000 milliseconds ", async () => {
 	  const startGamer = await page.evaluate(() => {
 		window.startGame();
