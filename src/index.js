@@ -311,9 +311,9 @@ function startGame(){
 
 startButton.addEventListener("click", startGame);
 
-const audioHit = new Audio("../assets/Laugh1.mp3");
-const audioHit2 = new Audio("../assets/Laugh2.mp3");
-const song = new Audio("../assets/Danganronpa.mp3");
+const audioHit = new Audio("https://github.com/Razetto/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/Laugh1.mp3?raw=true");
+const audioHit2 = new Audio("https://github.com/Razetto/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/Laugh2.mp3?raw=true");
+const song = new Audio("https://github.com/Razetto/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/Danganronpa.mp3?raw=true");
 
 function playAudio(audioObject) {
   audioObject.play();
